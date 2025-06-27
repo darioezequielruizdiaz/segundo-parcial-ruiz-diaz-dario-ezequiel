@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import { initDB } from "./src/config/database.js";
+import movieRouter from "./src/routes/movie.routes.js";
 
 dotenv.config()
 const app = express();
@@ -11,6 +12,8 @@ app.use(express.json());
 app.get("/", () => {
     console.log("Hola mundo! 👋");
 })
+
+app.use("/api/movies", movieRouter);
 
 initDB();
 
